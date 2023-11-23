@@ -58,7 +58,7 @@ def predict_and_draw(img_path, out_img_path):
         "boxes": [v for _, v in result_dict.items()],
     }
 
-def object_count (data)
+def object_count (data):
     #data = {
     #    'boxes': [
             # List of dictionaries containing object information 
