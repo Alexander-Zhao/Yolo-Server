@@ -57,3 +57,44 @@ def predict_and_draw(img_path, out_img_path):
     return {
         "boxes": [v for _, v in result_dict.items()],
     }
+
+def object_count (data)
+    #data = {
+    #    'boxes': [
+            # List of dictionaries containing object information 
+            # (detected by yolo server, and collected from result_dict)
+     #   ],
+    #}
+
+    # Dictionary to map categories (vehicle types)
+    category_mapping = {
+        'car': 'vehicle',
+        'bus': 'vehicle',
+        'truck': 'vehicle',
+        'person': 'person'
+        # we can add more mappings if needed for other categories
+    }
+
+    # Dictionary to store counts
+    category_counts = {'vehicle': 0, 'person': 0}
+
+    # Iterate through each box and count specified objects
+    for box in data['boxes']:
+        object_name = box['name']
+    
+        # Check if the object name is in the mapping
+        if object_name in category_mapping:
+            # Map the object to its category
+            category = category_mapping[object_name]
+        
+            # Increment the count for the category
+            if category in category_counts:
+                category_counts[category] += 1
+            else:
+                category_counts[category] = 1
+                
+    # Display the counts for vehicles and persons
+    for category, count in category_counts.items():
+        print(f"{category.capitalize()} count: {count}")
+        
+    return (category_counts)
