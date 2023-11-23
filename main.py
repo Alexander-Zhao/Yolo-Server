@@ -57,8 +57,12 @@ def flask_app():
         ) | {"gen_img": f"gen_img/{cur_id}.jpg"}
 
         pprint(result)
-        return jsonify(result)
-
+        #return jsonify(result)
+        count_data = yolo_backend.object_count(jsonify(result))
+        printf("\nsending count_data to client")
+        pprint(count_data)
+        return jsonify(count_data)
+        
     @app.route("/gen_img/<path:filepath>")
     def gen_img(filepath):
         return send_from_directory(DATA_PATH / "gen_img", filepath)
