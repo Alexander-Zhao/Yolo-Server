@@ -36,10 +36,12 @@ def flask_app():
     # Flask app
     app = Flask(__name__)
 
+    # Use the ping method and expect a return with OK.
     @app.route("/ping", methods=["GET"])
     def ping():
         return jsonify({"status": "ok"})
 
+    # Server receives the POST request from client
     @app.route("/predict", methods=["POST"])
     def predict_img():
         file = request.data
