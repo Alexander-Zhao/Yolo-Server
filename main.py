@@ -59,7 +59,7 @@ def flask_app():
         pprint(result)
         #return jsonify(result)
         count_data = yolo_backend.object_count(jsonify(result))
-        printf("\nsending count_data to client")
+        print("\nsending count_data to client")
         pprint(count_data)
         return jsonify(count_data)
         
