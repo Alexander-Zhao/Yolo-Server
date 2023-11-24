@@ -81,20 +81,18 @@ def object_count (data):
     # Iterate through each box and count specified objects
     for box in data['boxes']:
         object_name = box['name']
-    
-        # Check if the object name is in the mapping
-        if object_name in category_mapping:
-            # Map the object to its category
-            category = category_mapping[object_name]
-        
-            # Increment the count for the category
+        confidence = box['confidence']
+
+        # Check if the object has confidence > 0.7 and if the object name is in the mapping
+        if confidence > 0.7:
+            category = category_mapping.get(object_name)
+            
+            # Increment the count for the category if it's found in the mapping
             if category in category_counts:
                 category_counts[category] += 1
-            else:
-                category_counts[category] = 1
                 
-    # Display the counts for vehicles and persons
+    # Display the counts for vehicles and persons with confidence > 0.7
     for category, count in category_counts.items():
-        print(f"{category.capitalize()} count: {count}")
+        print(f"{category.capitalize()} count with confidence > 0.7: {count}")
         
     return (category_counts)
