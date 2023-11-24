@@ -58,8 +58,10 @@ def flask_app():
 
         pprint(result)
         #return jsonify(result)
-        count_data = yolo_backend.object_count(jsonify(result))
-        print("\nsending count_data to client")
+        count_data = yolo_backend.object_count(result)
+        print("\n sending count_data to client with JASON Format")
+        pprint(count_data)
+        count_data = count_data | {"gen_img": f"gen_img/{cur_id}.jpg"}
         pprint(count_data)
         return jsonify(count_data)
         
