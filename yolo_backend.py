@@ -58,7 +58,7 @@ def predict_and_draw(img_path, out_img_path):
     execution_time = end_time - start_time
     print(f"cv2 Image save time: {execution_time} seconds")
     # Try to make sure the image is saved successfully to the server.
-    time.sleep(3)
+    time.sleep(2)
     
     result_dict = result.to_dict(orient="index")
     return {
