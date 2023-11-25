@@ -1,4 +1,5 @@
 import hashlib
+import time
 
 import cv2
 import matplotlib
@@ -51,8 +52,14 @@ def predict_and_draw(img_path, out_img_path):
         p1, p2 = tuple(map(int, p1)), tuple(map(int, p2))
         cv2.rectangle(img, p1, p2, el["color"], 2)
 
+    start_time = time.time()
     cv2.imwrite(str(out_img_path), img)
-
+    end_time = time.time()
+    execution_time = end_time - start_time
+    print(f"cv2 Image save time: {execution_time} seconds")
+    # Try to make sure the image is saved successfully to the server.
+    time.sleep(3)
+    
     result_dict = result.to_dict(orient="index")
     return {
         "boxes": [v for _, v in result_dict.items()],
