@@ -15,6 +15,8 @@ This is how the system communicates between each section:
 
 
 How the app looks on a phone:
+
+
 ![image](https://github.com/user-attachments/assets/6a6d0e8a-8ae1-4e88-ac2f-f3d20b8156a2)
 
 
